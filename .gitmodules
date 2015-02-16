@@ -1,0 +1,3 @@
+[submodule "dataproxy"]
+	path = dataproxy
+	url = https://github.com/eccenca/dataproxy.git
