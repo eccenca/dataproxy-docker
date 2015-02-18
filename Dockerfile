@@ -14,6 +14,7 @@ ENV CLOUDSDK_PYTHON_SITEPACKAGES 1
 RUN google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash-completion=true --rc-path=/.bashrc --disable-installation-options
 RUN yes | google-cloud-sdk/bin/gcloud components update pkg-go pkg-python pkg-java preview app
 RUN mkdir /.ssh
+RUN mkdir -p /var/log/dataproxy
 
 ENV PATH /google-cloud-sdk/bin:$PATH
 
@@ -26,4 +27,4 @@ EXPOSE 8000
 
 WORKDIR /data
 
-CMD dev_appserver.py --host 0.0.0.0 --admin_host 0.0.0.0 dataproxy/
+CMD dev_appserver.py --host 0.0.0.0 --admin_host 0.0.0.0 dataproxy/ 2>&1 | tee -a /var/log/dataproxy/dataproxy.log
