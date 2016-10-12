@@ -17,8 +17,7 @@ RUN \
   && wget https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.zip \
   && unzip google-cloud-sdk.zip \
   && rm google-cloud-sdk.zip \
-  && google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash-completion=true --rc-path=/.bashrc --disable-installation-options \
-  && yes | google-cloud-sdk/bin/gcloud components update pkg-go pkg-python pkg-java preview app \
+  && google-cloud-sdk/install.sh --usage-reporting=true --path-update=true --bash-completion=true --rc-path=/.bashrc --disable-installation-options --additional-components app-engine-python \
   && mkdir /.ssh \
   && mkdir -p /var/log/dataproxy
 
