@@ -4,7 +4,7 @@ $ docker pull eccenca/dataproxy-docker
 # run
 
 ```
-$ docker run -d --name dataproxy -p 8080:8080 -p 8000:8000 eccenca/dataproxy-docker
+$ docker run -d --name dataproxy -p 8080:8080 -p 8000:8000 eccenca/ckan-dataproxy
 ```
 
 
@@ -12,7 +12,7 @@ $ docker run -d --name dataproxy -p 8080:8080 -p 8000:8000 eccenca/dataproxy-doc
 
 ## auth & save the credentials in gcloud-config volumes
 ```
-$ docker run -ti --name dataproxy-docker-config eccenca/dataproxy-docker gcloud auth login
+$ docker run -ti --name ckan-dataproxy-config eccenca/ckan-dataproxy gcloud auth login
 Go to the following link in your browser: ...
 Enter verification code: ...
 You are now logged in as [...]
@@ -23,5 +23,5 @@ gcloud config set project ...
 
 ## run dataproxy (with config)
 ```
-$ docker run -d --name dataproxy -p 8080:8080 -p 8000:8000 --volumes_from dataproxy-docker-config eccenca/dataproxy-docker
+$ docker run -d --name dataproxy -p 8080:8080 -p 8000:8000 --volumes_from ckan-dataproxy-config eccenca/ckan-dataproxy
 ```
