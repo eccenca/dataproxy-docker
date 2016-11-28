@@ -1,4 +1,4 @@
-VERSION=1.0.0
+VERSION=$(shell git describe --always --dirty)
 NAME=eccenca/dataproxy-docker
 TAG=${NAME}:${VERSION}
 
@@ -14,7 +14,10 @@ run-with-config:
 	docker run -d --name dataproxy -p 8080:8080 -p 8000:8000 --volumes-from dataproxy-docker-config $(TAG)
 
 run:
-	docker run -d --name dataproxy -p 8080:8080 -p 8000:8000 $(TAG)
+	docker run -d --name dataproxy -p 8000:8000 $(TAG)
+
+shell:
+	docker run -t --name dataproxy -p 8000:8000 $(TAG) bash
 
 stop:
 	docker stop dataproxy
